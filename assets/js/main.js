@@ -246,3 +246,8 @@
   new PureCounter();
 
 })()
+
+document.getElementById('contact-form').on((e) => {
+  e.preventDefault()
+  console.log('testing submit')
+})
