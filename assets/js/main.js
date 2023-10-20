@@ -3,6 +3,11 @@
 (function() {
   "use strict";
 
+  document.getElementById("contact-form").addEventListener('submit', (e)=> {
+    e.preventDefault()
+    document.querySelector('.sent-message').classList.add('d-block');
+  })
+
   /**
    * Easy selector helper function
    */
@@ -244,10 +249,4 @@
    * Initiate Pure Counter 
    */
   new PureCounter();
-
-})()
-
-document.getElementById('contact-form').on((e) => {
-  e.preventDefault()
-  console.log('testing submit')
 })
