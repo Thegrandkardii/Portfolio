@@ -15,24 +15,44 @@ body {
   color: #fff;
   position: relative;
   background: transparent;
+  z-index: -1;
 }
 
 body::before {
   content: "";
-  position: fixed;
-  background: #040404 url("../img/kadoon.JPG") top right no-repeat;
-  background-size: cover;
-  left: 0;
-  right: 0;
+  position: absolute;
+  /* background-size: cover; */
   top: 0;
-  height: 100vh;
-  z-index: -1;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1e1e1eb0;
+  z-index: 2;
 }
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url(../img/kadoon.JPG);
+  background-repeat: no-repeat;
+  background-position: top 20% center;
+  background-size: cover;
+  z-index: 1;
+}
+
 
 @media (min-width: 1024px) {
   body::before {
     background-attachment: fixed;
   }
+
+  .mobile-navigation {
+    display: none
+  }
+  
 }
 
 a {
@@ -59,10 +79,17 @@ h6 {
   transition: ease-in-out 0.3s;
   position: relative;
   height: 100vh;
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   z-index: 997;
-  overflow-y: auto;
+  /* overflow-y: auto; */
+}
+
+#header nav {
+  /* border: 1px solid red; */
+  width: fit-content;
+  margin-left: auto;
+  padding: 1rem;
 }
 
 #header * {
@@ -124,6 +151,18 @@ h6 {
   background: #18d26e;
 }
 
+.hero-container{
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  height: 80%;
+}
+
+.my-name-scrolled{
+  opacity: 0;
+}
 @media (max-width: 992px) {
   #header h1 {
     font-size: 36px;
@@ -142,6 +181,7 @@ h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
   }
 }
 
@@ -173,6 +213,7 @@ h6 {
 #header.header-top .container {
   display: flex;
   align-items: center;
+  /* border: 1px solid; */
 }
 
 #header.header-top .navbar {
@@ -197,7 +238,7 @@ h6 {
 */
 .navbar {
   padding: 0;
-  margin-top: 35px;
+  /* margin-top: 35px; */
 }
 
 .navbar ul {
@@ -280,12 +321,17 @@ h6 {
 }
 
 @media (max-width: 991px) {
-  .mobile-nav-toggle {
+  /* .mobile-nav-toggle {
     display: block;
+    z-index: 999999;
+  } */
+
+  .desktop-nav ul {
+    display: none;
   }
 
-  .navbar ul {
-    display: none;
+  .section.section-show {
+    top: 150px !important;
   }
 }
 
@@ -361,13 +407,23 @@ section .container {
   padding: 30px;
 }
 
+.mobile-nav-bg-scrolled {
+  background-color:#343434;
+  width: 100vw !important;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
   section {
     top: 120px;
   }
 
   section.section-show {
-    top: 80px;
+    top: 180px;
+  }
+
+  .mobile-navigation {
+    width: 100vw;
   }
 }
 
@@ -558,13 +614,23 @@ section .container {
   min-height: 320px;
 }
 
-.testimonials .testimonial-item .testimonial-img {
-  width: 90px;
+.testimonials-img-container {
+  width: 250px;
+  height: 250px;
+  /* border: 1px solid red; */
   border-radius: 50%;
-  margin: -40px 0 0 40px;
+  overflow: hidden;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+  /* width: 90px; */
+  /* border-radius: 50%; */
+  object-fit: cover;
+  background-position: center;
+  /* margin: -40px 0 0 40px; */
   position: relative;
   z-index: 2;
-  border: 6px solid rgba(255, 255, 255, 0.12);
+  /* border: 6px solid rgba(255, 255, 255, 0.12); */
 }
 
 .testimonials .testimonial-item h3 {
@@ -815,6 +881,21 @@ section .container {
   background: rgba(0, 0, 0, 0.6);
 }
 
+.portfolio-img-container {
+  /* border: 1px solid red; */
+  height: 500px;
+  width: fit-content;
+  margin-inline: auto;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.portfolio-img-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
 .portfolio .portfolio-wrap::before {
   content: "";
   background: rgba(0, 0, 0, 0.6);
@@ -973,6 +1054,10 @@ section .container {
 .portfolio-details .portfolio-info p {
   font-size: 15px;
   padding: 15px 0 0 0;
+}
+
+.testimonial-img-container {
+
 }
 
 @media (max-width: 992px) {
